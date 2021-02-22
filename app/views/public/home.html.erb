@@ -6,7 +6,7 @@
       <div class="card-body">
         <h1 class="card-title pricing-card-title">Get started for FREE</h1>
           <small>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</small>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-primary mt-3">Sign up for free</button>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -14,8 +14,9 @@
         <h4 class="my-0 font-weight-normal">Sign Up Today</h4>
       </div>
       <div class="card-body">
-        <%#= render '' %>
-        <!-- <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button> -->
+        <p>Click below to get started</p>
+
+        <%= link_to 'Sign up now', new_account_registration_path, class: 'btn btn-lg btn-block btn-primary' %>
       </div>
     </div>
   </div>
