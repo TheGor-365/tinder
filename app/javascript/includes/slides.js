@@ -2,6 +2,7 @@ $(function(){
   var $activeSlide = $('#slides .slide:first-child');
 
   // show first slide
+
   $activeSlide.addClass('showing');
 
   $('#decline').on('click', function(){
@@ -10,15 +11,27 @@ $(function(){
   });
 
   $('#approve').on('click', function(){
-    console.log('approve');
+    
+    var user_id = $activeSlide.data("id");
+
+    console.log(user_id);
+
+    $.ajax({
+      url: "/approve/" + user_id,
+      method: "post",
+      dataType: "ajax"
+    });
+
     goToSlide('approve');
   });
 
   function goToSlide(action){
+
     $activeSlide.removeClass('showing');
     $activeSlide = $activeSlide.next('.slide');
 
     // send data to controller
+
     if(action == 'approve'){
       console.log(action);
     } else {
