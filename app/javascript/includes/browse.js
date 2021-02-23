@@ -3,6 +3,12 @@ $(function(){
 
   // show first slide
 
+  $(".match-tile").on("click", function(){
+
+    var account_id = $(this).data("id");
+    console.log(account_id);
+  })
+
   $activeSlide.addClass('showing');
 
   $('#decline').on('click', function(){
@@ -11,7 +17,7 @@ $(function(){
   });
 
   $('#approve').on('click', function(){
-    
+
     var user_id = $activeSlide.data("id");
 
     console.log(user_id);
