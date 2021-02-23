@@ -13,14 +13,14 @@
   <body>
     <%= render 'layouts/nav' %>
 
-    <div class="container mt-5">
+    <div class="container-fluid p-0 bg-light">
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <!-- <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p> -->
 
       <%= yield %>
     </div>
-    
+
     <%= render 'layouts/footer' %>
   </body>
 </html>
