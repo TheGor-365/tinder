@@ -1,13 +1,21 @@
 $(function(){
   var $activeSlide = $('#slides .slide:first-child');
 
-  // show first slide
-
   $(".match-tile").on("click", function(){
-
     var account_id = $(this).data("id");
-    console.log(account_id);
-  })
+
+    $.ajax({
+      url: "/get/conversation/"+account_id,
+      method: "post",
+      dataType: "ajax"
+    })
+
+    $("#conversation").show();
+  });
+
+  $("#close-conversation").on("click", function(){
+    $("#conversation").hide();
+  });
 
   $activeSlide.addClass('showing');
 
@@ -19,7 +27,6 @@ $(function(){
   $('#approve').on('click', function(){
 
     var user_id = $activeSlide.data("id");
-
     console.log(user_id);
 
     $.ajax({
@@ -36,8 +43,6 @@ $(function(){
     $activeSlide.removeClass('showing');
     $activeSlide = $activeSlide.next('.slide');
 
-    // send data to controller
-
     if(action == 'approve'){
       console.log(action);
     } else {
@@ -45,6 +50,5 @@ $(function(){
     }
 
     $activeSlide.addClass('showing');
-
   }
 });
