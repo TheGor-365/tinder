@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(version: 2021_02_24_101858) do
 
   create_table "conversations", force: :cascade do |t|
     t.bigint "sender_id", null: false
-    t.bigint "recepient_id", null: false
+    t.bigint "recipient_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["recepient_id"], name: "index_conversations_on_recepient_id"
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
