@@ -9,8 +9,13 @@ class BrowseController < ApplicationController
 
     @profile = Account.find(current_account.id)
 
-    account_id = params[:id]
-    @match = Like.find_by(account_id)
+    id = params[:id]
+    @match = Like.find_by(id)
+
+    conversation = Conversation.between(id, current_account.id)
+
+    @conversation = conversation.size > 0 ? conversation.first : Conversation.new
+    @message = @conversation.messages.build
   end
 
   def approve
@@ -36,12 +41,17 @@ class BrowseController < ApplicationController
     # user swipes left
   end
 
-  def conversation
+  def open_conversation
     id = params[:id]
     @profile = Account.find(id)
 
     likes = Like.where(account_id: current_account.id, liked_account_id: id)
     @match = likes.first if likes.size > 0
+
+    conversation = Conversation.between(id, current_account.id)
+
+    @conversation = conversation.size > 0 ? conversation.first : Conversation.new
+    @message = @conversation.messages.build
 
     # @match = Like.find_by(id)
 

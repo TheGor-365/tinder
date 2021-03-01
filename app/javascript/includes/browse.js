@@ -5,9 +5,9 @@ $(function(){
     var account_id = $(this).data("id");
 
     $.ajax({
-      url: "/get/conversation/"+account_id,
+      url: "/get/conversation/" + account_id,
       method: "post",
-      dataType: "ajax"
+      dataType: "script"
     })
 
     $("#conversation").show();
