@@ -13,6 +13,27 @@ $(function(){
     $("#conversation").show();
   });
 
+  $(".profile-info").on('click', function(){
+    var $details = $(this).closest(".slide").find(".more-details");
+
+    $details.toggle();
+
+    // move controls down
+    $("#slide-controls").toggleClass("open");
+  });
+
+  $(".open-conversation").on("click", function(){
+    var account_id = $(this).data("id");
+
+    $.ajax({
+      url: "/get/conversation/" + account_id,
+      method: "post",
+      dataType: "script"
+    })
+
+    $("#conversation").show();
+  });
+
   $("#close-conversation").on("click", function(){
     $("#conversation").hide();
   });
@@ -20,7 +41,15 @@ $(function(){
   $activeSlide.addClass('showing');
 
   $('#decline').on('click', function(){
-    console.log('decline');
+
+    var user_id = $activeSlide.data("id");
+
+    $.ajax({
+      url: "/decline/" + user_id,
+      method: "post",
+      dataType: "ajax"
+    });
+
     goToSlide('decline');
   });
 
